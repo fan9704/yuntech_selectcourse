@@ -7,6 +7,7 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
 import schedule
 import time
+
 token="ZQTEJubMouLuf9MgHLoXrhnu0OyIXiZbruIiLP4PWWP"
 drivePath="C:\\Users\a8911\Downloads\chromedriver.exe"
 
@@ -19,11 +20,10 @@ def lineNotifyMessage_text(token,msg):
         "Content-Type": "application/x-www-form-urlencoded"
     }
     payload={'message':msg}
-    print("[System]Line Notify connect complete")
+    print("[System]",time.strftime(" %I:%M:%S %p",time.localtime()), " Line Notify connect complete")
     if(not msg ==''): 
         r=requests.post("https://notify-api.line.me/api/notify",headers=headers,params=payload)
-  
-    return r.status_code
+        return r.status_code
 
 def course(status):
     ans=''
@@ -55,7 +55,7 @@ def course(status):
         current_student_list.append(browser.find_element_by_id( current_student_number_ID).text)
         limit_student_list.append(browser.find_element_by_id(limit_student_number_ID).text)
 
-    print("catch course success")
+    print("[System]",time.strftime(" %I:%M:%S %p",time.localtime())," catch course success")
     length=len(number_list)
     for s in range(0,length):
         if("Creative Thinking" in course_name_list[s] or "Literature and Landscapes" in course_name_list[s]):
@@ -81,43 +81,43 @@ def login():
         password = "cxz123499"
         # ------ enter address and password ------
 
-        print("[System]Login condition prepare function not available please step by")
+        print("[System]",time.strftime(" %I:%M:%S %p",time.localtime())," Login condition prepare function not available please step by")
         elem = browser.find_element_by_id("pLoginName")
         elem.send_keys(username)
-        print("[System]type in username OK")
+        print("[System]",time.strftime(" %I:%M:%S %p",time.localtime())," type in username OK")
         elem = browser.find_element_by_id("pLoginPassword")
         elem.send_keys(password)        
-        print("[System]type in password OK")
+        print("[System]",time.strftime(" %I:%M:%S %p",time.localtime())," type in password OK")
         elem.send_keys(Keys.RETURN)
     except Exception as e:
         print(e)
-        print("has logined")
+        print("[System]",time.strftime(" %I:%M:%S %p",time.localtime()),"has logined")
     return True
 
 def main():
     if(loginstatus):
         msg=course(True)
         code=lineNotifyMessage_text(token,msg)
-        print("[System]",code)
+        print("[System]",time.strftime(" %I:%M:%S %p",time.localtime())," ",code)
     else:
         login()
         msg=course(True)
         code=lineNotifyMessage_text(token,msg)
-        print("[System]",code)
+        print("[System]",time.strftime(" %I:%M:%S %p",time.localtime())," ",code)
 def another():
     if(loginstatus):
         msg=course(False)
         code=lineNotifyMessage_text(token,msg)
-        print("[System]",code)
+        print("[System]",time.strftime(" %I:%M:%S %p",time.localtime())," ",code)
     else:
         login()
         msg=course(False)
         code=lineNotifyMessage_text(token,msg)
-        print("[System]",code)
+        print("[System]",time.strftime(" %I:%M:%S %p",time.localtime())," ",code)
 
 schedule.every(3).hours.do(another)
 loginstatus=login()
-schedule.every(0.5).hours.do(main)
+schedule.every(0.5).minutes.do(main)
 while True:  
     schedule.run_pending()  
     time.sleep(1)  
