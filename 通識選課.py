@@ -79,8 +79,8 @@ def login():
     try:
         browser.get('https://webapp.yuntech.edu.tw/YunTechSSO/Account/Login'  ) #login form
         # ------ address and password ------
-        username = "B10923057"
-        password = "cxz123499"
+        username = "<Your SSO Account>"
+        password = "<Your SSO Password>"
         # ------ enter address and password ------
 
         print("[System]",time.strftime(" %I:%M:%S %p",time.localtime())," Login condition prepare function not available please step by")
