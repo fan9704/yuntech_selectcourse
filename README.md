@@ -7,3 +7,8 @@ please install python module
 3. pip install schedule
 
 webdriver version should match your browser
+
+### Login Your Yuntech SSO
+please modify in python file
+1. username='Your SSO username'
+2. password='Your SSO password'
