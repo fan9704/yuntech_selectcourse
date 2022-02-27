@@ -1,14 +1,19 @@
 # yuntech_selectcourse
 choose course automatically  and auto login yuntechSSO
 
-please install python module
-1. pip install selenium
-2. pip install requests
-3. pip install schedule
+Install all dependencies
+```cmd=
+pipenv install
+```
+Renew your google chrome and your chrome driver in this project folder
+[Chrome Driver Download Link](https://chromedriver.chromium.org/)
 
 webdriver version should match your browser
 
-### Login Your Yuntech SSO
-please modify in python file
-1. username='Your SSO username'
-2. password='Your SSO password'
+### Login Your Yuntech SSO and send notify to you line account
+add ".env" file in this project
+Don,t add "" in parameter
+Content=>
+SSO_username = S_id
+SSO_password = S_password
+token = line_notify_token

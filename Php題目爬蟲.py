@@ -10,7 +10,8 @@ import requests
 from bs4 import BeautifulSoup
 import io
 import time
-drivePath="C:\\Users\cxz12\Downloads\chromedriver.exe"#chromedriver path
+from dotenv import load_dotenv
+# drivePath="C:\\Users\cxz12\Downloads\chromedriver.exe"#chromedriver path
 
 browser=webdriver.Chrome()#open browser
 

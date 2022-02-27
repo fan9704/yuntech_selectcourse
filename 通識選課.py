@@ -7,9 +7,11 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
 import schedule
 import time
-
+import os
+from dotenv import load_dotenv
+load_dotenv()
 token="ZQTEJubMouLuf9MgHLoXrhnu0OyIXiZbruIiLP4PWWP"#line notify token
-drivePath="C:\\Users\a8911\Downloads\chromedriver.exe"#chromedriver path
+# drivePath="C:\\Users\a8911\Downloads\chromedriver.exe"#chromedriver path
 
 browser=webdriver.Chrome()#open browser
 url='https://webapp.yuntech.edu.tw/AAXCCS/CourseSelectionRegister.aspx'
@@ -79,8 +81,8 @@ def login():
     try:
         browser.get('https://webapp.yuntech.edu.tw/YunTechSSO/Account/Login'  ) #login form
         # ------ address and password ------
-        username = "<Your SSO Account>"
-        password = "<Your SSO Password>"
+        username = os.getenv('SSO_username')
+        password = os.getenv('SSO_password')
         # ------ enter address and password ------
 
         print("[System]",time.strftime(" %I:%M:%S %p",time.localtime())," Login condition prepare function not available please step by")
