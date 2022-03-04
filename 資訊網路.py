@@ -16,14 +16,8 @@ from dotenv import load_dotenv
 browser=webdriver.Chrome()#open browser
 
 
-for i in range(0,1000):
-    if(i<100):
-        if(i<10):
-            i=("00"+str(i))
-        else:
-            i=("0"+str(i))
-    url="http://140.125.95.10/term1102/network/practice/doc/p14"+str(i)+".doc"
-    #url="http://140.125.95.10/term1101/phpdb/practice/doc/p14hw5.doc"
+for i in range(0,100):
+    url="http://140.125.95.10/term1102/network/homework/doc/p"+str(i)+".docx"
     #requests.get(url)
     browser.get(url)
 
